@@ -14,7 +14,7 @@ pipeline {
     
     	stage('CheckOut Code'){
          	steps{
-            	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "sba-github",url: GIT_URL]]])
+            	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "sshkeys",url: GIT_URL]]])
             	}
               }
         stage('Maven Build'){
