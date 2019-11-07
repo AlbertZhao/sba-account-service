@@ -2,11 +2,11 @@ pipeline {
     agent any
     environment {
       
-	    GIT_URL = "git@github.ibm.com:sba/account.git"
-		GIT_CRED = "48946d03-31f8-4cee-a4ed-c138e7b900a0"
-		DOCKER_REPO="registry.cn-shanghai.aliyuncs.com/yuanbing/sba-account"
-		DOCKER_REG="https://registry.cn-shanghai.aliyuncs.com"
-		DOCKER_REG_KEY = "874c3949-6135-41d1-902c-ebd184193ded"
+	    GIT_URL = "git@github.com:AlbertZhao/sba-account-service.git"
+		GIT_CRED = ""
+		DOCKER_REPO="myrepo"
+		DOCKER_REG="https://hub.docker.com/repository/docker/sjdocker88"
+		DOCKER_REG_KEY = "6d918d67-bf87-4530-9f5c-e488200c6f34"
 		dockerImage = ''
       
     }
@@ -14,7 +14,7 @@ pipeline {
     
     	stage('CheckOut Code'){
          	steps{
-            	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: GIT_CRED, url: GIT_URL]]])
+            	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: GIT_URL]]])
             	}
               }
         stage('Maven Build'){
