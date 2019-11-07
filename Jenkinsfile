@@ -3,7 +3,7 @@ pipeline {
     environment {
       
 	    GIT_URL = "git@github.com:AlbertZhao/sba-account-service.git"
-		GIT_CRED = ""
+		GIT_CRED = "sba-github"
 		DOCKER_REPO="myrepo"
 		DOCKER_REG="https://hub.docker.com/repository/docker/sjdocker88"
 		DOCKER_REG_KEY = "6d918d67-bf87-4530-9f5c-e488200c6f34"
@@ -14,7 +14,7 @@ pipeline {
     
     	stage('CheckOut Code'){
          	steps{
-            	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: GIT_URL]]])
+            	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: "sba-github",url: GIT_URL]]])
             	}
               }
         stage('Maven Build'){
